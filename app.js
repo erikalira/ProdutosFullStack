@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 var produtosRouter = require('./routes/produtos');
 const { Produto } = require('./app/models');
 
-Produto.create({ id_categoria: 10, descricao: 'Intel i9' });
+//Produto.create({ id_categoria: 10, descricao: 'Intel i9' });
 
 var app = express();
 
