@@ -1,13 +1,31 @@
 import React from 'react';
-import Products from './components/products';
+import Products from './components/Products';
+import AddProduct from './components/AddProduct';
+import EditProduct from './components/EditProduct';
 
 class App extends React.Component {
   constructor(props){
     super(props)
 
     this.state = {
-      products: []
+      products: [],
+      editing: false
     }
+    this.editRow = this.editRow.bind(this)
+    this.closeEdit = this.closeEdit.bind(this)
+  }
+  editRow(event) {
+    event.preventDefault()
+    this.setState({
+      editing: true
+    })
+  }
+
+  closeEdit(event) {
+    event.preventDefault()
+    this.setState({
+      editing: false,
+    })
   }
   componentDidMount() {
     fetch('http://localhost:3001/produtos')
@@ -21,7 +39,17 @@ class App extends React.Component {
 
   render(){
     return (
-      <Products products={this.state.products} />
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            {this.state.editing ?
+              <EditProduct closeEdit={this.closeEdit} /> : <AddProduct />
+            }
+          </div>
+          
+          <Products products={this.state.products} editRow={this.editRow} />
+        </div>
+      </div>
     );
   }
   
