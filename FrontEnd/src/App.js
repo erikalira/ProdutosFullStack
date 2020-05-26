@@ -98,7 +98,10 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="container">
+      <div className="container-fullwidth bg-light">
+        <nav class="navbar-expand navbar-white bg-white shadow-sm">
+          <h1 class="pb-2 text-center"  style={{fontFamily: 'Abril Fatface', fontSize:40}}>Gerenciar Produtos</h1>
+        </nav>
         <div className="row">
           <div className="col">
             {this.state.editing ?
@@ -106,8 +109,9 @@ class App extends React.Component {
               : <AddProduct categories={this.state.categories} handleChange={this.handleChange} addProduct={this.addProduct} />
             }
           </div>
-          
-          <Products products={this.state.products} openEdit={this.openEdit} />
+          <div className="col">
+            <Products products={this.state.products} openEdit={this.openEdit} />
+          </div>
         </div>
       </div>
     );

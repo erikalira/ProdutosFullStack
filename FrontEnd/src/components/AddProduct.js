@@ -3,7 +3,7 @@ import React from 'react'
 class AddProduct extends React.Component {
   render(){
     return (
-      <div className="col">
+      <div className="card m-3 p-3 shadow-lg border-0">
         <h2>Adicionar Produto</h2>
         <form onSubmit={this.props.addProduct}>
           <div className="form-group">
@@ -22,7 +22,7 @@ class AddProduct extends React.Component {
           </div>
           <button 
             type="submit"
-            className="btn btn-primary">Adicionar
+            className="btn btn-primary m-1">Adicionar
           </button>
         </form>
       </div>

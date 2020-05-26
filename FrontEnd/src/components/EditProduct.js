@@ -3,7 +3,7 @@ import React from 'react'
 class EditProduct extends React.Component {
     render(){
         return (
-            <div className="col">
+            <div className="card m-3 p-3 shadow-lg border-0">
                 <h2>Editar Produto</h2>
                 <form onSubmit={this.props.editProduct}>
                 <div className="form-group">
@@ -20,8 +20,12 @@ class EditProduct extends React.Component {
                     }
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary">Editar</button>
-                <button onClick={this.props.closeEdit}  className="btn btn-danger">Cancelar</button>
+                <button type="submit" className="btn btn-primary m-1">Editar</button>
+                <button 
+                    onClick={this.props.closeEdit}  
+                    className="btn btn-danger m-1">
+                        Cancelar
+                </button>
                 </form>
             </div>
         )
