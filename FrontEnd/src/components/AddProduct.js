@@ -5,7 +5,7 @@ class AddProduct extends React.Component {
     return (
       <div className="col">
         <h2>Adicionar Produto</h2>
-        <form onSubmit={this.props.addUser}>
+        <form onSubmit={this.props.addProduct}>
           <div className="form-group">
             <label>Nome do produto:</label>
               <input className="form-control" type='text' name="product" onChange={this.props.handleChange} required />

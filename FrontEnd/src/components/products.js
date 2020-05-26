@@ -24,11 +24,15 @@ class Products extends React.Component {
               <h5 className="card-title">{product.descricao}</h5>
               <h6 className="card-subtitle mb-2 text-muted">{product.categorias.categoria}</h6>
               <button 
-                onClick={this.props.editRow} 
+                onClick={e => {e.preventDefault(); this.props.openEdit(product)}} 
                 className="btn btn-default margin: 1rem">
                   Editar
               </button>
-              <button onClick={e => { e.preventDefault(); this.deleteProduct(product.id) } } className="btn btn-danger">Apagar</button>
+              <button 
+                onClick={e => { e.preventDefault(); this.deleteProduct(product.id) } } 
+                className="btn btn-danger">
+                  Apagar
+              </button>
               
             </div>
           </div>

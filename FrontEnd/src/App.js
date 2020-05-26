@@ -13,11 +13,12 @@ class App extends React.Component {
       editing: false,
       id: null,
       product: '',
-      category: ''
+      category: null
     }
-    this.editRow = this.editRow.bind(this)
+    this.openEdit = this.openEdit.bind(this)
     this.closeEdit = this.closeEdit.bind(this)
-    this.addUser = this.addUser.bind(this)
+    this.editProduct = this.editProduct.bind(this)
+    this.addProduct = this.addProduct.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -27,7 +28,21 @@ class App extends React.Component {
     })
   }
 
-  addUser(event) {
+  editProduct(event){
+    event.preventDefault();
+    console.log([this.state.product,this.state.category])
+    fetch('http://localhost:3001/produtos/'+ this.state.id, {
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      method: 'PUT',
+      body: JSON.stringify({
+        descricao: this.state.product,
+        id_categoria: this.state.category
+      })
+    })
+    window.location.reload(false);
+  }
+
+  addProduct(event) {
     event.preventDefault();
     const requestOptions = {
       method: 'POST',
@@ -43,10 +58,12 @@ class App extends React.Component {
     window.location.reload(false);
   }
 
-  editRow(event) {
-    event.preventDefault()
+  openEdit(product) {
     this.setState({
-      editing: true
+      editing: true,
+      id: product.id,
+      product: product.descricao,
+      category: product.categorias.id
     })
   }
 
@@ -85,12 +102,12 @@ class App extends React.Component {
         <div className="row">
           <div className="col">
             {this.state.editing ?
-              <EditProduct closeEdit={this.closeEdit} /> 
-              : <AddProduct categories={this.state.categories} handleChange={this.handleChange} addUser={this.addUser} />
+              <EditProduct product={this.state.product} editProduct={this.editProduct}  closeEdit={this.closeEdit} categories={this.state.categories} handleChange={this.handleChange} /> 
+              : <AddProduct categories={this.state.categories} handleChange={this.handleChange} addProduct={this.addProduct} />
             }
           </div>
           
-          <Products products={this.state.products} editRow={this.editRow} />
+          <Products products={this.state.products} openEdit={this.openEdit} />
         </div>
       </div>
     );
