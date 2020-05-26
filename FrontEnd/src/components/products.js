@@ -1,6 +1,19 @@
 import React from 'react'
 
 class Products extends React.Component {
+  constructor(props){
+    super(props)
+    this.deleteProduct = this.deleteProduct.bind(this)
+  }
+
+  deleteProduct(id) {
+    fetch('http://localhost:3001/produtos/'+ id, {
+      method: 'DELETE'
+    });
+    console.log(id)
+    window.location.reload(false);
+  }
+
   render(){
     return (
       <div className="col">
@@ -15,7 +28,8 @@ class Products extends React.Component {
                 className="btn btn-default margin: 1rem">
                   Editar
               </button>
-              <button className="btn btn-default">Apagar</button>
+              <button onClick={e => { e.preventDefault(); this.deleteProduct(product.id) } } className="btn btn-danger">Apagar</button>
+              
             </div>
           </div>
         ))}

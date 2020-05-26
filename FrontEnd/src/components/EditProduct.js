@@ -14,8 +14,8 @@ class EditProduct extends React.Component {
                 <label>Categoria:</label>
                 <input className="form-control" />
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-            <button onClick={this.props.closeEdit}  className="btn btn-default">Cancel</button>
+            <button type="submit" className="btn btn-primary">Editar</button>
+            <button onClick={this.props.closeEdit}  className="btn btn-danger">Cancelar</button>
             </form>
         </div>
         )

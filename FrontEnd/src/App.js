@@ -27,6 +27,11 @@ class App extends React.Component {
       editing: false,
     })
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Component re-rendered.')
+  }
+
   componentDidMount() {
     fetch('http://localhost:3001/produtos')
     .then(res => res.json())
