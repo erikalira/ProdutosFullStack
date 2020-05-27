@@ -98,22 +98,24 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="container-fullwidth bg-light">
-        <nav class="navbar-expand navbar-white bg-white shadow-sm">
-          <h1 class="pb-2 text-center"  style={{fontFamily: 'Abril Fatface', fontSize:40}}>Gerenciar Produtos</h1>
-        </nav>
-        <div className="row">
-          <div className="col">
-            {this.state.editing ?
-              <EditProduct product={this.state.product} editProduct={this.editProduct}  closeEdit={this.closeEdit} categories={this.state.categories} handleChange={this.handleChange} /> 
-              : <AddProduct categories={this.state.categories} handleChange={this.handleChange} addProduct={this.addProduct} />
-            }
-          </div>
-          <div className="col">
-            <Products products={this.state.products} openEdit={this.openEdit} />
+        <div>
+          <nav class="navbar-expand navbar-white bg-white shadow-sm">
+            <h1 class="pb-2 text-center"  style={{fontFamily: 'Montserrat', fontSize: 45}}>Gerenciar Produtos</h1>
+          </nav>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col">
+                {this.state.editing ?
+                  <EditProduct product={this.state.product} editProduct={this.editProduct}  closeEdit={this.closeEdit} categories={this.state.categories} handleChange={this.handleChange} /> 
+                  : <AddProduct categories={this.state.categories} handleChange={this.handleChange} addProduct={this.addProduct} />
+                }
+              </div>
+              <div className="col">
+                <Products products={this.state.products} openEdit={this.openEdit} />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
     );
   }
   

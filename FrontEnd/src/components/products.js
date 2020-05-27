@@ -16,7 +16,7 @@ class Products extends React.Component {
 
   render(){
     return (
-      <div className="card m-3 p-3 shadow-lg border-0">
+      <div className="card mr-4 mt-3 mb-3 p-3 shadow-lg border-0">
         <h2>Lista de Produtos</h2>
         {this.props.products.map((product) => (
           <div key={product.id} className="card mb-2 shadow-sm">
