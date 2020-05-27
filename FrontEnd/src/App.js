@@ -13,7 +13,8 @@ class App extends React.Component {
       editing: false,
       id: null,
       product: '',
-      category: null
+      category: null,
+      searchByCategory: ''
     }
     this.openEdit = this.openEdit.bind(this)
     this.closeEdit = this.closeEdit.bind(this)
@@ -26,6 +27,7 @@ class App extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     })
+    //console.log([event.target.name, event.target.value])
   }
 
   editProduct(event){
@@ -82,7 +84,7 @@ class App extends React.Component {
     fetch('http://localhost:3001/produtos')
     .then(res => res.json())
     .then((data) => {
-      console.table(data.products);
+      //console.table(data.products);
       this.setState({ products: data.products })
     })
     .catch(console.log)
@@ -90,7 +92,7 @@ class App extends React.Component {
     fetch('http://localhost:3001/categorias')
     .then(res => res.json())
     .then((data) => {
-      console.table(data.categorias);
+      //console.table(data.categorias);
       this.setState({ categories: data.categorias })
     })
     .catch(console.log)
@@ -99,8 +101,8 @@ class App extends React.Component {
   render(){
     return (
         <div>
-          <nav class="navbar-expand navbar-white bg-white shadow-sm">
-            <h1 class="pb-2 text-center"  style={{fontFamily: 'Montserrat', fontSize: 45}}>Gerenciar Produtos</h1>
+          <nav className="navbar-expand navbar-white bg-white shadow-sm">
+            <h1 className="pb-2 text-center"  style={{fontFamily: 'Montserrat', fontSize: 45}}>Gerenciar Produtos</h1>
           </nav>
           <div className="container-fluid">
             <div className="row">
@@ -111,7 +113,7 @@ class App extends React.Component {
                 }
               </div>
               <div className="col">
-                <Products products={this.state.products} openEdit={this.openEdit} />
+                <Products handleChange={this.handleChange} searchByCategory={this.state.searchByCategory} categories={this.state.categories} products={this.state.products} openEdit={this.openEdit} />
               </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ class AddProduct extends React.Component {
             <label>Categoria:</label>
             <select className="form-control" name="category" id="categoria" onChange={this.props.handleChange} required>
                 <option value=''></option>
-            {this.props.categories.map((category) => (
+            {this.props.categories.map(category => (
                 <option key={category.id} value={category.id}>{category.categoria}</option>
             ))
             }
