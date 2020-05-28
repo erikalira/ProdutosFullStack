@@ -54,10 +54,23 @@ const updateProduct = async (req, res) => {
   try {
     const { productsId } = req.params;
     const [ updated ] = await models.Produto.update(req.body, {
-      where: { id: productsId }
+      where: { id: productsId },
+      include: [
+        {
+          model: models.Categoria,
+          as: 'categorias'
+        }
+      ]
     });
     if (updated) {
-      const updatedProduto = await models.Produto.findOne({ where: { id: productsId } });
+      const updatedProduto = await models.Produto.findOne({ where: { id: productsId },
+        include: [
+          {
+            model: models.Categoria,
+            as: 'categorias'
+          }
+        ]
+      });
       return res.status(200).json({ products: updatedProduto });
     }
     throw new Error('Produto não foi encontrado!');
