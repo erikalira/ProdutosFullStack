@@ -1,12 +1,8 @@
 # produtosAPI
 API RESTful com NodeJS para CRUD de produtos
 
-## instalar dependencias:
+## instalar dependencias
     npm install
-
-## rodar app:
-    npm start
-    nodemon
 
 ## exportar modelo para o banco de dados
     npx sequelize-cli db:migrate
@@ -14,4 +10,11 @@ API RESTful com NodeJS para CRUD de produtos
 ## colocar dados no banco de dados
     npx sequelize-cli db:seed:all
 
+## rodar app
+    npm start
+    nodemon
 
+rodando em: [http://localhost:3001](http://localhost:3001)
+
+## rodar testes
+    npm run test
