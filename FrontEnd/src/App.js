@@ -100,27 +100,26 @@ class App extends React.Component {
 
   render(){
     return (
-        <div>
-          <nav className="navbar-expand navbar-white bg-white shadow-sm">
-            <h1 className="pb-2 text-center"  style={{fontFamily: 'Montserrat', fontSize: 45}}>Gerenciar Produtos</h1>
-          </nav>
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col">
-                {this.state.editing ?
-                  <EditProduct product={this.state.product} editProduct={this.editProduct}  closeEdit={this.closeEdit} categories={this.state.categories} handleChange={this.handleChange} /> 
-                  : <AddProduct categories={this.state.categories} handleChange={this.handleChange} addProduct={this.addProduct} />
-                }
-              </div>
-              <div className="col">
-                <Products handleChange={this.handleChange} searchByCategory={this.state.searchByCategory} categories={this.state.categories} products={this.state.products} openEdit={this.openEdit} />
-              </div>
+      <div>
+        <nav className="navbar-expand navbar-white bg-white shadow-sm">
+          <h1 className="pb-2 text-center"  style={{fontFamily: 'Montserrat', fontSize: 45}}>Gerenciar Produtos</h1>
+        </nav>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col">
+              {this.state.editing ?
+                <EditProduct product={this.state.product} editProduct={this.editProduct}  closeEdit={this.closeEdit} categories={this.state.categories} handleChange={this.handleChange} /> 
+                : <AddProduct categories={this.state.categories} handleChange={this.handleChange} addProduct={this.addProduct} />
+              }
+            </div>
+            <div className="col">
+              <Products handleChange={this.handleChange} searchByCategory={this.state.searchByCategory} categories={this.state.categories} products={this.state.products} openEdit={this.openEdit} />
             </div>
           </div>
         </div>
+      </div>
     );
   }
-  
 }
 
 export default App;

@@ -4,6 +4,7 @@ class Products extends React.Component {
   constructor(props){
     super(props)
     this.deleteProduct = this.deleteProduct.bind(this)
+    this.productCard = this.productCard.bind(this)
   }
 
   deleteProduct(id) {
@@ -14,9 +15,37 @@ class Products extends React.Component {
     window.location.reload(false);
   }
 
+  productCard(product) {
+    return (
+      <div key={product.id} className="card mb-2 shadow-sm">
+        <div className="card-body">
+          <div className="row">
+            <div className="col">
+              <h5 className="card-title">{product.descricao}</h5>
+              <h6 className="card-subtitle mb-1 text-muted">{product.categorias.categoria}</h6>
+            </div>
+            <div className="col">
+              <button 
+                onClick={e => {e.preventDefault(); this.props.openEdit(product)}} 
+                className="btn btn-default m-1" style={{"float": "right"}}>
+                  <i className="fas fa-edit mr-1"></i>
+                  Editar
+              </button>
+              <button 
+                onClick={e => { e.preventDefault(); this.deleteProduct(product.id) } } 
+                className="btn btn-danger m-1" style={{"float": "right"}}>
+                  <i className="fas fa-trash mr-1"></i>
+                  Apagar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  )}
+
   render(){
     return (
-      <div className="card mr-4 mt-3 mb-3 p-3 shadow-lg border-0">
+      <div className="card m-3 p-3 shadow-lg border-0">
         <div className="row mb-2">
           <div className="col">
             <h2>Lista de Produtos</h2>
@@ -35,46 +64,8 @@ class Products extends React.Component {
         {this.props.searchByCategory 
         ? (this.props.products
           .filter((product) => product.categorias.id === parseInt(this.props.searchByCategory))
-          .map((product) => (
-          <div key={product.id} className="card mb-2 shadow-sm">
-            <div className="card-body">
-              <h5 className="card-title">{product.descricao}</h5>
-              <h6 className="card-subtitle mb-1 text-muted">{product.categorias.categoria}</h6>
-              <button 
-                onClick={e => {e.preventDefault(); this.props.openEdit(product)}} 
-                className="btn btn-default m-1">
-                  <i className="fas fa-edit mr-1"></i>
-                  Editar
-              </button>
-              <button 
-                onClick={e => { e.preventDefault(); this.deleteProduct(product.id) } } 
-                className="btn btn-danger m-1">
-                  <i className="fas fa-trash mr-1"></i>
-                  Apagar
-              </button>
-            </div>
-          </div>
-        )))
-        : (this.props.products.map((product) => (
-          <div key={product.id} className="card mb-2 shadow-sm">
-            <div className="card-body">
-              <h5 className="card-title">{product.descricao}</h5>
-              <h6 className="card-subtitle mb-1 text-muted">{product.categorias.categoria}</h6>
-              <button 
-                onClick={e => {e.preventDefault(); this.props.openEdit(product)}} 
-                className="btn btn-default m-1">
-                  <i className="fas fa-edit mr-1"></i>
-                  Editar
-              </button>
-              <button 
-                onClick={e => { e.preventDefault(); this.deleteProduct(product.id) } } 
-                className="btn btn-danger m-1">
-                  <i className="fas fa-trash mr-1"></i>
-                  Apagar
-              </button>
-            </div>
-          </div>
-        )))
+          .map(this.productCard))
+        : (this.props.products.map(this.productCard))
         }
       </div>
     )
