@@ -10,12 +10,22 @@ module.exports = {
     return queryInterface.bulkInsert('Categoria', 
       [
         {
-          categoria: 'Eletronico',
+          categoria: 'Eletronicos',
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           categoria: 'Livros',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          categoria: 'Brinquedos',
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          categoria: 'Alimentos',
           createdAt: new Date(),
           updatedAt: new Date()
         }

@@ -11,13 +11,25 @@ module.exports = {
       [
         {
         id_categoria: 1,
-        descricao: 'notebook i7',
+        descricao: 'Notebook i7',
         createdAt: new Date(),
         updatedAt: new Date()
         },
         {
         id_categoria: 2,
         descricao: 'Aprendendo JavaScript',
+        createdAt: new Date(),
+        updatedAt: new Date()
+        },
+        {
+        id_categoria: 3,
+        descricao: 'Quebra-Cabeça',
+        createdAt: new Date(),
+        updatedAt: new Date()
+        },
+        {
+        id_categoria: 4,
+        descricao: 'Suco',
         createdAt: new Date(),
         updatedAt: new Date()
         }
