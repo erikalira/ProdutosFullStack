@@ -1,5 +1,5 @@
 import React from 'react'
-
+import API_URL from '../apiUrl'
 class Products extends React.Component {
   constructor(props){
     super(props)
@@ -8,7 +8,7 @@ class Products extends React.Component {
   }
 
   deleteProduct(id) {
-    fetch('http://localhost:3001/produtos/'+ id, {
+    fetch(API_URL + '/produtos/'+ id, {
       method: 'DELETE'
     });
     console.log(id)

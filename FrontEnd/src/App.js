@@ -2,6 +2,7 @@ import React from 'react';
 import Products from './components/Products';
 import AddProduct from './components/AddProduct';
 import EditProduct from './components/EditProduct';
+import API_URL from './apiUrl'
 
 class App extends React.Component {
   constructor(props){
@@ -33,7 +34,7 @@ class App extends React.Component {
   editProduct(event){
     event.preventDefault();
     console.log([this.state.product,this.state.category])
-    fetch('http://localhost:3001/produtos/'+ this.state.id, {
+    fetch(API_URL + '/produtos/'+ this.state.id, {
       headers: { "Content-Type": "application/json; charset=utf-8" },
       method: 'PUT',
       body: JSON.stringify({
@@ -55,7 +56,7 @@ class App extends React.Component {
       })
     };
 
-    fetch('http://localhost:3001/produtos/', requestOptions)
+    fetch(API_URL + '/produtos/', requestOptions)
         .then(response => response.json());
     window.location.reload(false);
   }
@@ -81,7 +82,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/produtos')
+    fetch(API_URL + '/produtos')
     .then(res => res.json())
     .then((data) => {
       //console.table(data.products);
@@ -89,7 +90,7 @@ class App extends React.Component {
     })
     .catch(console.log)
 
-    fetch('http://localhost:3001/categorias')
+    fetch(API_URL + '/categorias')
     .then(res => res.json())
     .then((data) => {
       //console.table(data.categorias);
