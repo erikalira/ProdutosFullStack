@@ -1,6 +1,7 @@
 {
-  "homepage": "https://erikalira.github.io/ProdutosFullStack",
+  "homepage": "https://erikalira.github.io/CRUDFullStack",
   "name": "manager-app",
+  "author": "Erika Lira",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
